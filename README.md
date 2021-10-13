@@ -84,6 +84,17 @@ The controller is the component that, well, controls, an instance of an Aries fr
 
 # [DEMO]
 
+```
+git clone https://github.com/hyperledger/aries-cloudagent-python
+pip3 install aries-cloudagent
+```
+
+ - bashrc
+```
+PATH=$PATH:$HOME/hyperledger/github/aries-cloudagent-python/bin/aca-py
+```
+
+
 
 <br><br><br><br><hr><br><br><br><br>
 
@@ -131,3 +142,4 @@ The Aries Cloud Agent Python currently only supports Hyperledger Indy-based veri
 <br><br><br><br><hr><br><br><br><br>
 
 # [ Thinking ]
+
