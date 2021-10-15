@@ -10,6 +10,8 @@
 
 ![](./mdsrc/2.png)
 
+
+
 <br>
 <hr>
 <br>
@@ -82,18 +84,133 @@ The controller is the component that, well, controls, an instance of an Aries fr
 
 <br><br><br><br><hr><br><br><br><br>
 
-# [DEMO]
+# [DEMO : Aries OpenAPI DEMO]
+
+## _Using GreenLight Dev Ledger `vonx.io`_
+
+http://dev.greenlight.bcovrin.vonx.io/
+
+<br><br>
+
+## _Terminal A : Start the Faber Agent_
+
+```cmd
+LEDGER_URL=http://dev.greenlight.bcovrin.vonx.io ./run_demo faber --events --no-auto --bg
+
+docker logs -f faber
+```
+
+<br><br>
+
+## _Terminal B : Start the Alice Agent_
+```cmd
+LEDGER_URL=http://dev.greenlight.bcovrin.vonx.io ./run_demo alice --events --no-auto --bg
+
+docker logs -f alice
+```
+
+
+<br><br>
+
+## _Terminal B : Start the Alice Agent_
+```cmd
+LEDGER_URL=http://dev.greenlight.bcovrin.vonx.io ./run_demo alice --events --no-auto --bg
+
+docker logs -f alice
+```
+
+## _Scenario_
+
+### - Faber : Create an Invitation
+
+`POST /connections/create-invitation`
+
+```js
+body : {}
+```
+ - RESULT
+```
+{
+  "connection_id": "4bab2143-8a3f-4984-8238-8a1824e06b67",
+  "invitation": {
+    "@type": "https://didcomm.org/connections/1.0/invitation",
+    "@id": "d9d22f87-5ee3-4a83-88fb-9f37ce32043b",
+    "label": "faber.agent",
+    "serviceEndpoint": "http://10.0.2.15:8020",
+    "recipientKeys": [
+      "H55GXCYUAqhJ693ccbZHSHBpRuFaskRMMR51TwVWJFnV"
+    ]
+  },
+  "invitation_url": "http://10.0.2.15:8020?c_i=eyJAdHlwZSI6ICJodHRwczovL2RpZGNvbW0ub3JnL2Nvbm5lY3Rpb25zLzEuMC9pbnZpdGF0aW9uIiwgIkBpZCI6ICJkOWQyMmY4Ny01ZWUzLTRhODMtODhmYi05ZjM3Y2UzMjA0M2IiLCAibGFiZWwiOiAiZmFiZXIuYWdlbnQiLCAic2VydmljZUVuZHBvaW50IjogImh0dHA6Ly8xMC4wLjIuMTU6ODAyMCIsICJyZWNpcGllbnRLZXlzIjogWyJINTVHWENZVUFxaEo2OTNjY2JaSFNIQnBSdUZhc2tSTU1SNTFUd1ZXSkZuViJdfQ=="
+}
+```
+
+### - Faber : Copy the Invitation Object
 
 ```
-git clone https://github.com/hyperledger/aries-cloudagent-python
-pip3 install aries-cloudagent
+{
+    "@type": "https://didcomm.org/connections/1.0/invitation",
+    "@id": "d9d22f87-5ee3-4a83-88fb-9f37ce32043b",
+    "label": "faber.agent",
+    "serviceEndpoint": "http://10.0.2.15:8020",
+    "recipientKeys": [
+      "H55GXCYUAqhJ693ccbZHSHBpRuFaskRMMR51TwVWJFnV"
+    ]
+}
 ```
 
- - bashrc
+### - Faber : make state `invitation`
+
+`GET /connections`
+
+ - RESULT
+
 ```
-PATH=$PATH:$HOME/hyperledger/github/aries-cloudagent-python/bin/aca-py
+{
+  "results": [
+    {
+      "invitation_key": "D3WhFyeRAKtsEDfAtSopTeu8xxBozPRpvrCcvyiKJazr",
+      "their_role": "invitee",
+      "updated_at": "2021-10-15 09:55:34.580995Z",
+      "connection_protocol": "connections/1.0",
+      "routing_state": "none",
+      "connection_id": "64cbf6a6-a42d-49f8-adca-dd4ac77a1380",
+      "accept": "manual",
+      "invitation_mode": "once",
+      "rfc23_state": "invitation-sent",
+      "state": "invitation",
+      "created_at": "2021-10-15 09:55:34.580995Z"
+    },
+    {
+      "invitation_key": "H55GXCYUAqhJ693ccbZHSHBpRuFaskRMMR51TwVWJFnV",
+      "their_role": "invitee",
+      "updated_at": "2021-10-15 10:08:46.824962Z",
+      "connection_protocol": "connections/1.0",
+      "routing_state": "none",
+      "connection_id": "4bab2143-8a3f-4984-8238-8a1824e06b67",
+      "accept": "manual",
+      "invitation_mode": "once",
+      "rfc23_state": "invitation-sent",
+      "state": "invitation",
+      "created_at": "2021-10-15 10:08:46.824962Z"
+    }
+  ]
+}
 ```
 
+### - Alice : receive Faber's invitation
+
+`POST /connections/receive-invitation`
+
+<br><br>
+
+## _Stop Containers_
+
+```cmd
+docker stop faber
+docker stop alice
+```
+## _build VON network locally_
 
 
 <br><br><br><br><hr><br><br><br><br>
@@ -142,4 +259,5 @@ The Aries Cloud Agent Python currently only supports Hyperledger Indy-based veri
 <br><br><br><br><hr><br><br><br><br>
 
 # [ Thinking ]
+
 
