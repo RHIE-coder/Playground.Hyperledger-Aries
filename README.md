@@ -86,6 +86,8 @@ The controller is the component that, well, controls, an instance of an Aries fr
 
 # [DEMO : Aries OpenAPI DEMO]
 
+_`DIDComm Layer`_
+
 ## _Using GreenLight Dev Ledger `vonx.io`_
 
 http://dev.greenlight.bcovrin.vonx.io/
@@ -201,6 +203,41 @@ body : {}
 ### - Alice : receive Faber's invitation
 
 `POST /connections/receive-invitation`
+
+```
+body : 
+{
+    "@type": "https://didcomm.org/connections/1.0/invitation",
+    "@id": "d9d22f87-5ee3-4a83-88fb-9f37ce32043b",
+    "label": "faber.agent",
+    "serviceEndpoint": "http://10.0.2.15:8020",
+    "recipientKeys": [
+      "H55GXCYUAqhJ693ccbZHSHBpRuFaskRMMR51TwVWJFnV"
+    ]
+}
+```
+ - RESULT
+
+```
+```
+
+### - Alice : Accept Faber's invitation
+
+`POST /connections/{conn_id}/accept-invitation`
+
+### - Faber : Get Request
+
+`POST /connections/{conn_id}/accept-request`
+
+### - Alice : Review Connection Status
+
+`GET /connections`
+
+### - Faber : Review Connection Status
+
+`GET /connections`
+
+
 
 <br><br>
 
