@@ -6,3 +6,13 @@
 
 # [DKMS (Decentralized Key Management System) Design and Architecture V4](https://github.com/hyperledger/aries-rfcs/blob/main/concepts/0051-dkms/dkms-v4.md)
 
+# Searching LOG
+
+### ----------------------------------------------
+You need to create the DID on the ledger before you run aca-py.
+
+https://github.com/hyperledger/aries-cloudagent-python/issues/150
+
+### ----------------------------------------------
+
+https://taeyonghwang.github.io/project/acapy-and-von-network2/

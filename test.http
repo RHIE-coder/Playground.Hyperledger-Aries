@@ -1,0 +1,14 @@
+POST http://localhost:8001/wallet/did/create
+content-type: application/json
+
+{
+    "method" : "sov",
+    "option" : {
+        "key_type" : "ed25519",
+        "posture" : "posted"
+    }
+}
+
+###
+
+GET http://localhost:8001/ledger/get-nym-role?did=BV6QiSYDCTAMaK9HNFhrQ9KQJrjh21GuTnXQTNcWPcCR
