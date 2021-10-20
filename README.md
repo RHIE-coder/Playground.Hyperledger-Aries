@@ -738,15 +738,3 @@ The Aries Cloud Agent Python currently only supports Hyperledger Indy-based veri
 ## _more..._
 
 [GITHUB EXPLORER](https://github.com/orgs/hyperledger/repositories?language=&q=aries&sort=&type=)
-
-
-<br><br><br><br><hr><br><br><br><br>
-
-# [ Issue & On-going ]
-
-
-<br><br><br><br><hr><br><br><br><br>
-
-# [ Thinking ]
-
-
