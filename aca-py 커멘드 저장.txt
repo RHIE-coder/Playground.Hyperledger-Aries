@@ -61,8 +61,8 @@
    --recreate-wallet \
    --auto-provision \
    --wallet-type indy \
-   --wallet-name rhie.agent1234 \
-   --wallet-key rhie.agent1234 \
+   --wallet-name alice_wallet \
+   --wallet-key alice_wallet_key \
    --genesis-file ./genesis/local.txn \
    --trace-target log \
    --trace-tag acapy.events \
@@ -76,6 +76,34 @@
    --auto-respond-credential-offer \
    --auto-respond-credential-request \
    --auto-store-credential
+
+./tutorial-env/bin/aca-py start \
+   --endpoint http://127.0.0.1:8040 \
+   --label rhie.agent \
+   --inbound-transport http 0.0.0.0 8040 \
+   --outbound-transport http \
+   --admin 0.0.0.0 8041 \
+   --admin-insecure-mode \
+   --recreate-wallet \
+   --auto-provision \
+   --wallet-type indy \
+   --wallet-name alice_wallet \
+   --wallet-key alice_wallet_key \
+   --genesis-url http://localhost:9000/genesis \
+   --trace-target log \
+   --trace-tag acapy.events \
+   --trace-label rhie.agent.trace \
+   --preserve-exchange-records \
+   --auto-ping-connection \
+   --auto-respond-messages \
+   --auto-accept-requests \
+   --auto-accept-invites \
+   --auto-respond-credential-proposal \
+   --auto-respond-credential-offer \
+   --auto-respond-credential-request \
+   --auto-store-credential
+
+
 
 --------------------------------
 --seed d_000000000000000000000000437328 \
